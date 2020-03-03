@@ -1,20 +1,31 @@
 package cr.una.presentacion;
 
-import cr.una.logica.Bus;
+import cr.una.logica.MathOperation;
 
 import java.util.Observable;
 import java.util.Observer;
 
 public class Model extends Observable {
 
-    Bus _bus;
+    MathOperation _math;
 
     public Model() {
-        _bus = new Bus("",0,0);
+        _math = new MathOperation();
     }
 
-    public void toAssign(){
-        
+    public double toAssign(int data, double x, double y) {
+        switch (data) {
+            case 1:
+                return _math.sum(x, y);
+            case 2:
+                return _math.subtraction(x, y);
+            case 3:
+                return _math.multiplication(x, y);
+            case 4:
+                return _math.division(x, y);
+            default:
+                return 0;
+        }
     }
 
     @Override
